@@ -1,0 +1,64 @@
+{
+ "login":{
+  "login":"تسجيل الدخول",
+  "email":"الإيميل",
+  "password":"كلمة المرور",
+  "req":"يجب ملئ الحقل",
+  "registerNow":"سجل الآن"
+  },
+  "details":{
+    "deadline":" الموعد النهائى :",
+    "complete":"إتمام المهمة",
+    "description":"الوصف -->"
+
+  },
+  "register":{
+    "reg":"التسجيل",
+    "username":"إسم المستخدم",
+    "email":"الإيميل",
+    "password":"كلمة المرور",
+    "confPassword":"تأكيد كلمة المرور",
+    "notMatched":"كلمة المرور غير متطابقة",
+    "createAcc":"إنشاء حساب",
+    "haveAcc":"هل لديك حساب ؟",
+    "req":"يجب ملئ الحقل"
+  },
+  "tasks":{
+    "search":"البحث بالإسم ...",
+    "deadline":" الموعد النهائى :",
+    "details":"التفاصيل",
+    "complete":"إتمام المهمة",
+    "no-Matching":"لا توجد عناصر مطابقة"
+
+  },
+  "navBar":{
+    "AllTasks":"المهام",
+    "logOut":"تسجيل الخروج"
+  },
+  "users":{
+
+  },
+  "general":{
+          "loading":"انـتـظـار"
+  },
+  "toaster":{
+    "loginSuccess":"تم تسجيل الدخول بنجاح",
+    "registerSuccess":"تم التسجيل بنجاح",
+    "complete":"تم إتمام المهمة بنجاح",
+    "error":"حدث خطأ ما",
+    "notAuth":"حدث خطأ ما ، حاول تسجيل الدخول",
+    "jwtEx":"انتهت الجلسة",
+    "jwtMus":"يجب تسجيل الدخول",
+    "noTask":"... لا توجد مهام مسجلة لك"
+  },
+  "ngx-pagination":{
+    "previous":"السابق",
+    "next":"التالى"
+  },
+  "buttons":{
+
+  },
+  "img":{
+    "NotAvailable":"لا تتوفر صورة"
+  }
+}

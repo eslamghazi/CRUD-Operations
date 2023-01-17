@@ -1,0 +1,89 @@
+{
+"login":{
+    "login":"login",
+    "email":"email",
+    "password":"password"
+},
+  "tasks":{
+    "addTask":"Add Task",
+    "Complete":"Complete",
+    "inComplete":"In-Progress",
+    "titleSearch":"Search By Title",
+    "userSearch":"Search By User",
+    "statusSearch":"Search By Satus",
+    "deadlineSearch":"Search By Deadline",
+    "sdeadlineSearch":"Start Date",
+    "edeadlineSearch":"End Date",
+    "prev":"Preview",
+    "title":"Title",
+    "user":"User",
+    "userChoose":"Choose User",
+    "deadline":"DeadLine Date",
+    "status":"Status",
+    "statusChoose":"Choose Status",
+    "actions":"Actions",
+    "update":"Update",
+    "delete":"Delete",
+    "no-Matching":"No matching elements"
+
+  },
+  "confirm":{
+    "sure":"Are you sure that you want to Continue Your  Changes ?",
+    "yes":"Yes",
+    "no":"No"
+
+  },
+  "navBar":{
+    "Tasks":"Tasks",
+    "AllTasks":"All-Tasks",
+    "logOut":"Logout",
+    "Users":"Users"
+  },
+  "users":{
+    "no":"No.",
+    "name":"name",
+    "email":"email",
+    "taskAssigned":"Task Assigned",
+    "delete":"Delete",
+    "in-Active":"In-Active",
+    "active":"Active",
+    "no-Matching":"No matching elements",
+    "userSearch":"Search By User",
+    "emailSearch":"Search By Email",
+    "actions":"Actions"
+  },
+  "addTask":{
+    "newTask":"Add New Task",
+    "close":"Close",
+    "title":"Title",
+    "user":"Choose User",
+    "img":"Choose Image",
+    "deadline":"Choose Deadline Date",
+    "description":"Add Description ...",
+    "create":"Create"
+
+},
+  "general":{
+    "loading":"Loading"
+  },
+  "ngx-pagination":{
+   "previous":"Previous",
+   "next":"Next"
+  },
+  "toaster":{
+    "loginSucs":"Login Successfully",
+    "createSucs":"Task Created Successfully",
+    "updateSucs":"Task Updated Successfully",
+    "deleteSucs":"User Deleted successfully",
+    "chanStatSucs":"User Status Updated Successfully",
+    "CantDelete":"Can't Delete This User Until Finsh His Tasks",
+    "error":"Something went wrong",
+    "notAuth":"Something went wrong , Try Signning in again",
+    "jwtEx":"Session Expired",
+    "jwtMus":"You Should Sign in"
+
+  },
+  "buttons":{
+
+  }
+}

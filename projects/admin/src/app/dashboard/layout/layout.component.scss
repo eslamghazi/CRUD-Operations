@@ -1,0 +1,33 @@
+nav {
+  // background-color: #5d8164;
+  border: outset;
+  border-color: slateblue;
+  border-width: thin;
+  .navbar-brand {
+      font-size: 27px;
+      font-weight: bold;
+      color: #e3d510!important;
+  img{
+  width:  120px;}
+  }
+
+
+
+
+  .navbar-nav.mr-auto{flex: auto!important;}
+  a {
+      font-size: 20px;
+      color: #FFF!important;
+      //padding: 7px 20px;
+      &.active  {
+          background-color: #910340;
+          color: #FFF;
+      }
+  }
+}
+
+.rtl{direction:rtl!important;}
+.nav-link{
+background-color: #4a184e;
+margin-left: 5px;
+}

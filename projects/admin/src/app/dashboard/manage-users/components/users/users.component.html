@@ -1,0 +1,63 @@
+<div class="mt-4">
+
+
+    <div class="listBox">
+      <div class="input-group mb-3">
+      <input type="text" [ngClass]="{'rtl': langu=='ar'}" placeholder='{{"users.userSearch"|translate}}'  class="form-control" [(ngModel)]="userFilter.username">
+      <input type="text" [ngClass]="{'rtl': langu=='ar'}" placeholder='{{"users.emailSearch"|translate}}' class="form-control ml-2" [(ngModel)]="userFilter.email">
+    </div >
+        <table *ngIf="(dataSource |filterBy: userFilter).length != 0" mat-table  [dataSource]="dataSource|filterBy:userFilter" class="mat-elevation-z8  w-100 mt-2">
+          <!-- <span *ngIf="(dataSource |filterBy: userFilter).length === 0">No matching elements</span> -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef>{{"users.no"|translate}}</th>
+              <td mat-cell *matCellDef="let element;let index = index"> {{index + 1}} </td>
+            </ng-container>
+
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>{{"users.name"|translate}}</th>
+              <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef>{{"users.email"|translate}}</th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="tasksAssigned">
+                <th mat-header-cell *matHeaderCellDef>{{"users.taskAssigned"|translate}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.assignedTasks}} </td>
+              </ng-container>
+
+
+            <ng-container matColumnDef="actions" >
+                <th mat-header-cell *matHeaderCellDef class="w-20">{{"users.actions"|translate}}</th>
+                <td mat-cell *matCellDef="let element; let index = index"  >
+                    <button  mat-raised-button color="warn" class="mx-2" (click)="deleteTask(element._id , index)">{{"users.delete"|translate}}</button>
+                    <button (click)="changeUserStatus(element._id,element.status,index)"  mat-raised-button color="primary"*ngIf="element.status=='Active'">{{"users.in-Active"|translate}}</button>
+                    <button (click)="changeUserStatus(element._id,element.status,index)" mat-raised-button class="btn btn-success"*ngIf="element.status!=='Active'">{{"users.active"|translate}}</button>
+                </td>
+              </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns | paginate: { id: 'tasks',
+            itemsPerPage: 10,
+            currentPage: page,
+            totalItems: totalItems };"></tr>
+          </table>
+          <h1 class="text-center mb-0 " *ngIf="(dataSource |filterBy: userFilter).length === 0">{{"users.no-Matching"|translate}}</h1>
+
+
+
+    </div>
+
+    <div  class="d-flex justify-content-center mt-3">
+      <pagination-controls previousLabel='{{"ngx-pagination.previous"|translate}}' nextLabel='{{"ngx-pagination.next"|translate}}'  (pageChange)="changePage($event)" id='tasks'></pagination-controls>
+    </div>
+
+</div>

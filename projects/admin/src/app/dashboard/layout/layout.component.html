@@ -1,0 +1,36 @@
+<nav [ngClass]="{'rtl': lang=='ar'}" class="navbar navbar-expand-lg navbar-light ">
+  <div class="container ">
+    <div class="navbar-brand" >
+      <img src="../../../assets/logo-no-background.png" alt="">
+    </div>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/tasks" routerLinkActive="active"> {{"navBar.AllTasks"|translate}} <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users"  routerLinkActive="active">{{"navBar.Users"|translate}}</a>
+        </li>
+      </ul>
+     <div class="nav-item d-flex">
+      <a class="nav-link" (click)="signOut()" routerLink="/login">{{"navBar.logOut"|translate}}</a>
+     <!-- <a class="nav-link"  (click)="changeLanguage()"> {{lang== 'en' ? "عـربـي" : "English"}} </a> -->
+     <a class="nav-link"  role="button" *ngIf="lang=='ar'" (click)="changeLanguage('en')"> English </a>
+     <a class="nav-link" role="button"  *ngIf="lang=='en'" (click)="changeLanguage('ar')"> عربي </a>
+
+
+
+
+     </div>
+    </div>
+  </div>
+
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

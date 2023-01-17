@@ -1,0 +1,65 @@
+{
+  "login":{
+    "login":"Login",
+    "email":"Email",
+    "password":"Password",
+    "req":"Required",
+    "registerNow":"Register Now"
+
+},
+  "tasks":{
+    "search":"Search By Name ...",
+    "deadline":"DeadLine Date :",
+    "details":"Details",
+    "complete":"Complete",
+    "no-Matching":"No matching elements"
+
+  },
+  "details":{
+    "deadline":"DeadLine Date :",
+    "complete":"Complete",
+    "description":"Description :"
+  },
+  "register":{
+    "reg":"Register",
+    "username":"Username",
+    "email":"Email",
+    "password":"Password",
+    "confPassword":"Confirm Password",
+    "notMatched":"Not Matched",
+    "createAcc":"Create Account",
+    "haveAcc":"Have An Account ?",
+    "req":"Required"
+  },
+  "navBar":{
+    "AllTasks":"All-Tasks",
+    "logOut":"Logout"
+  },
+  "users":{
+
+  },
+  "general":{
+            "loading":"Loading"
+  },
+  "toaster":{
+    "loginSuccess":"Login Success",
+    "registerSuccess":"Register Success",
+    "complete":"Task Complete Successfully",
+    "error":"Something went wrong",
+    "notAuth":"Something went wrong , Try Signning in again",
+    "jwtEx":"Session Expired",
+    "jwtMus":"You Should Sign in",
+    "noTask":"No Tasks Found Assgined For you ..."
+
+  },
+  "ngx-pagination":{
+    "previous":"Previous",
+    "next":"Next"
+  },
+  "buttons":{
+
+  },
+  "img":{
+    "NotAvailable":"Not Available"
+  }
+}

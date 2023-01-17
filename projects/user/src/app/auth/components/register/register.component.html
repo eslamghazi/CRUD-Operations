@@ -1,0 +1,49 @@
+<div  class="login d-flex justify-content-center align-items-center m-auto">
+
+    <!-- <div class="row"> -->
+        <!-- <div class="col-md-6 p-0">
+            <div class="overlay"></div>
+            <img src="../../../../assets/desola-lanre-ologun-zYgV-NGZtlA-unsplash.jpg" alt="">
+        </div> -->
+        <div class="col-md-6">
+         <div class="h-100 d-flex align-items-center justify-content-center w-100">
+            <div style="background: #fff;" class="box w-75">
+                <h2>{{"register.reg"|translate}} </h2>
+
+
+                <form [formGroup]="registerForm">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>{{"register.username"|translate}}</mat-label>
+                        <input matInput formControlName="username"  placeholder='{{"register.username"|translate}}'>
+                        <mat-error>{{"register.req"|translate}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>{{"register.email"|translate}}</mat-label>
+                        <input matInput formControlName="email" placeholder='{{"register.email"|translate}}'>
+                        <mat-error>{{"register.req"|translate}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>{{"register.password"|translate}}</mat-label>
+                        <input matInput formControlName="password" type="password" placeholder='{{"register.password"|translate}}'>
+                        <mat-error>{{"register.req"|translate}}</mat-error>
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>{{"register.confPassword"|translate}}</mat-label>
+                        <input matInput formControlName="confirmPassword" type="password" placeholder='{{"register.confPassword"|translate}}'>
+                        <mat-error>{{"register.req"|translate}}</mat-error>
+                        <mat-hint *ngIf="registerForm.hasError('notSame')">{{"register.notMatched"|translate}}</mat-hint>
+                    </mat-form-field>
+                </form>
+                <div class="d-flex justify-content-center">
+                    <button mat-raised-button [disabled]="registerForm.invalid" (click)="createAccount()"  color="warn">{{"register.createAcc"|translate}}</button>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a routerLink="/login">{{"register.haveAcc"|translate}} </a>
+                </div>
+            </div>
+         </div>
+        </div>
+    <!-- </div> -->
+
+</div>
