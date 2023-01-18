@@ -14,6 +14,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule, MatRippleModule, MAT_DATE_LOCALE} from '@angular/material/core';
 
 @NgModule({
@@ -31,6 +33,8 @@ import {MatNativeDateModule, MatRippleModule, MAT_DATE_LOCALE} from '@angular/ma
     MatIconModule,
     MatInputModule,
     MatRadioModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
     MatSelectModule,
     MatDatepickerModule,
     MatSortModule,

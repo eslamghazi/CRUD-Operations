@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="imageBox">
-        <img [src]="'https://crud-back-k13x.onrender.com/'+ taskDetails?.image" alt='{{"img.NotAvailable"|translate}}' class="w-100">
+  <div class="imageBox ">
+      <img  [src]="'https://crud-back-k13x.onrender.com/'+ taskDetails?.image"  alt="" onerror="this.onerror; this.src='../../../../../assets/no-photo.jpg'">
     </div>
     <div  class="d-flex justify-content-between align-items-baseline my-3">
         <h1 class="card-title ">{{taskDetails?.title}}</h1>
         <button  mat-raised-button color="warn" (click)="complete()">{{"details.complete"|translate}}</button>
     </div>
-    <p class="card-subtitle mb-2 text-muted">{{"details.deadline"|translate}} {{taskDetails?.deadline}}</p>
+    <p class="card-subtitle mb-2 text-light">{{"details.deadline"|translate}} {{taskDetails?.deadline}}</p>
     <hr>
-    <p class="card-text">{{"details.description"|translate}} {{taskDetails?.description}} </p>
+    <p class="card-text text-light">{{"details.description"|translate}} {{taskDetails?.description}} </p>
 </div>

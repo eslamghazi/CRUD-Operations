@@ -1,6 +1,6 @@
 import { UsersService } from './../../../manage-users/services/users.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
@@ -9,6 +9,10 @@ import { ToastrService } from 'ngx-toastr';
 import { ConfirmationComponent } from '../../confirmation/confirmation.component';
 import { TasksService } from '../../services/tasks.service';
 import { AddTaskComponent } from '../add-task/add-task.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+
 export interface PeriodicElement {
   title: string;
   user: string;
@@ -25,12 +29,13 @@ export interface PeriodicElement {
 export class ListTasksComponent implements OnInit {
   displayedColumns: string[] = ['position', 'title', 'user' ,'deadline','status', 'actions'];
   dataSource : any=[] ;
+  @ViewChild(MatPaginator) paginator!:MatPaginator
   tasksFilter!:FormGroup
   page:any=1
 
 filteration:any ={
   //for pagenation
-  limit:10,
+  // limit:10,
   page:this.page,
 }
 timeOutId:any
@@ -40,8 +45,10 @@ total:any
   ]
 
   status:any = [
-    {name:this.translate.instant("tasks.Complete")  },
-    {name:this.translate.instant("tasks.inComplete") },
+    // {name:this.translate.instant("tasks.Complete")  },
+    {name:"",},
+    {name:"Complete",},
+    {name:"In-Progress",},
   ]
   constructor(
 private service:TasksService,
@@ -62,7 +69,9 @@ this.getUser()
 
 getAllTasks() {
 this.service.getAllTasks(this.filteration).subscribe((res:any)=>{
- this.dataSource= this.mappingTasks(res.tasks)
+  this.dataSource= new MatTableDataSource(this.mappingTasks(res.tasks) )
+ this.dataSource.paginator=this.paginator
+
 //Gather total items with getAllTasks() for pagenation
 this.total=res.totalItems
 })
@@ -102,18 +111,18 @@ this.filteration['page']=1
 selectUsers(event:any){
 
 this.filteration['userId']=event.value
-this.getAllTasks()
 this.page=1
 this.filteration['page']=1
+this.getAllTasks()
 
     }
 
 selectStatus(event:any){
 
   this.filteration['status']=event.value.trim()
-  this.getAllTasks()
   this.page=1
   this.filteration['page']=1
+  this.getAllTasks()
 }
 
 selectDate(event:any,type:any){
@@ -128,7 +137,6 @@ selectDate(event:any,type:any){
     this.filteration['toDate']=''
     this.getAllTasks()
   }
-
   this.page=1
   this.filteration['page']=1
 }
@@ -137,16 +145,11 @@ selectDate(event:any,type:any){
       return{
        ...item,
         user:item.userId.username
-
       }
-
     })
 
-
     return newTasks
-
     }
-
 
   addTask(){
       const dialogRef = this.dialog.open(AddTaskComponent, {
@@ -193,7 +196,7 @@ if(result==true){
   this.service.deleteTask(id).subscribe(res=>{
 
     this.getAllTasks()
-    this.toastr.success("success","Deleted successfully")
+    this.toastr.success(this.translate.instant('toaster.deleteTask'))
   })
 
 }else{

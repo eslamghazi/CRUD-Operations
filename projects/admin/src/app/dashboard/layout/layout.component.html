@@ -8,7 +8,7 @@
     </button>
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
 
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto flex">
         <li class="nav-item active">
           <a class="nav-link" routerLink="/tasks" routerLinkActive="active"> {{"navBar.AllTasks"|translate}} <span class="sr-only">(current)</span></a>
         </li>
@@ -16,16 +16,22 @@
           <a class="nav-link" routerLink="/users"  routerLinkActive="active">{{"navBar.Users"|translate}}</a>
         </li>
       </ul>
-     <div class="nav-item d-flex">
+     <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
       <a class="nav-link" (click)="signOut()" routerLink="/login">{{"navBar.logOut"|translate}}</a>
      <!-- <a class="nav-link"  (click)="changeLanguage()"> {{lang== 'en' ? "عـربـي" : "English"}} </a> -->
+    </li>
+    <li class="nav-item active">
      <a class="nav-link"  role="button" *ngIf="lang=='ar'" (click)="changeLanguage('en')"> English </a>
+    </li>
+    <li class="nav-item active">
+
      <a class="nav-link" role="button"  *ngIf="lang=='en'" (click)="changeLanguage('ar')"> عربي </a>
+ </li>
 
 
 
-
-     </div>
+     </ul>
     </div>
   </div>
 

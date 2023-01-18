@@ -1,12 +1,18 @@
-<div class="mt-4">
+<mat-form-field appearance="standard">
+  <mat-label>{{"users.FilterTable"|translate}}</mat-label>
+  <input matInput placeholder="" search (keyup)="applyFilter($event)">
+</mat-form-field>
+
+<!-- <div class="mt-4"> -->
+<div class="mat-elevation-z8">
 
 
-    <div class="listBox">
-      <div class="input-group mb-3">
+    <!-- <div class="listBox"> -->
+      <!-- <div class="input-group mb-3">
       <input type="text" [ngClass]="{'rtl': langu=='ar'}" placeholder='{{"users.userSearch"|translate}}'  class="form-control" [(ngModel)]="userFilter.username">
       <input type="text" [ngClass]="{'rtl': langu=='ar'}" placeholder='{{"users.emailSearch"|translate}}' class="form-control ml-2" [(ngModel)]="userFilter.email">
-    </div >
-        <table *ngIf="(dataSource |filterBy: userFilter).length != 0" mat-table  [dataSource]="dataSource|filterBy:userFilter" class="mat-elevation-z8  w-100 mt-2">
+    </div > -->
+        <table  mat-table  [dataSource]="dataSource" class="w-100 mt-2">
           <!-- <span *ngIf="(dataSource |filterBy: userFilter).length === 0">No matching elements</span> -->
 
             <!-- Position Column -->
@@ -38,26 +44,34 @@
             <ng-container matColumnDef="actions" >
                 <th mat-header-cell *matHeaderCellDef class="w-20">{{"users.actions"|translate}}</th>
                 <td mat-cell *matCellDef="let element; let index = index"  >
-                    <button  mat-raised-button color="warn" class="mx-2" (click)="deleteTask(element._id , index)">{{"users.delete"|translate}}</button>
-                    <button (click)="changeUserStatus(element._id,element.status,index)"  mat-raised-button color="primary"*ngIf="element.status=='Active'">{{"users.in-Active"|translate}}</button>
-                    <button (click)="changeUserStatus(element._id,element.status,index)" mat-raised-button class="btn btn-success"*ngIf="element.status!=='Active'">{{"users.active"|translate}}</button>
+                    <button  mat-raised-button color="warn" class="mx-2" (click)="deleteTask(element._id , element.assignedTasks)">{{"users.delete"|translate}}</button>
+                    <button (click)="changeUserStatus(element._id,element.status,element.assignedTasks)"  mat-raised-button color="primary"*ngIf="element.status=='Active'">{{"users.in-Active"|translate}}</button>
+                    <button (click)="changeUserStatus(element._id,element.status,element.assignedTasks)" mat-raised-button class="btn btn-success"*ngIf="element.status!=='Active'">{{"users.active"|translate}}</button>
                 </td>
               </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns | paginate: { id: 'tasks',
-            itemsPerPage: 10,
-            currentPage: page,
-            totalItems: totalItems };"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns "></tr>
+
+            <!-- When data not Exist -->
+            <tr *matNoDataRow>
+              <td class="mat-cell No" colspan="5">
+                {{"users.no-Matching"|translate}}
+              </td>
+            </tr>
+            <!-- When data not Exist -->
+
           </table>
-          <h1 class="text-center mb-0 " *ngIf="(dataSource |filterBy: userFilter).length === 0">{{"users.no-Matching"|translate}}</h1>
+          <mat-paginator [pageSizeOptions]="[5,10,25,100]" ></mat-paginator>
+          <!-- <h1 class="text-center mb-0 " *ngIf="(dataSource |filterBy: userFilter).length === 0">{{"users.no-Matching"|translate}}</h1> -->
 
 
 
-    </div>
+    <!-- </div> -->
 
-    <div  class="d-flex justify-content-center mt-3">
+    <!-- <div  class="d-flex justify-content-center mt-3">
       <pagination-controls previousLabel='{{"ngx-pagination.previous"|translate}}' nextLabel='{{"ngx-pagination.next"|translate}}'  (pageChange)="changePage($event)" id='tasks'></pagination-controls>
-    </div>
+    </div> -->
 
+<!-- </div> -->
 </div>

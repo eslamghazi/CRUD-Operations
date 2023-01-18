@@ -78,17 +78,25 @@ this.tasksService.getAllTasks(this.userData.userId,this.filteration).subscribe((
   this.dataSource=res.tasks
   this.totalItems=res.totalItems
 
-
 }
 )
 
   }
-  changePage(event:any){
 
-this.page=event
-this.filteration['page']=event
-this.getAllTasks()
+  refresh(event:any){
+    this.page=1
+    // this.filteration['page']=1
+// this.getAllTasks()
+
   }
+
+  // changePage(event:any){
+
+// this.page=event
+// this.filteration['page']=event
+// this.getAllTasks()
+  // }
+
   complete(ele:any){
 const MODEL={
 id:ele._id

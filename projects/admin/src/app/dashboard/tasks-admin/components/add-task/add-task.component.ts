@@ -36,15 +36,34 @@ formValues:any
     this.createForm()
   }
 
+  async  getFileFromUrl(url:any, name:any, defaultType = 'image/jpg'){
+    const response = await fetch(url);
+    const data = await response.blob();
+    return new File([data], name, {
+      type: data.type || defaultType,
+    });
+  }
+
+
+
   createForm(){
-this.newTaskForm=this.fb.group({
-  title:[this.data?.title||'',[Validators.required,Validators.minLength(5)]],
-  userId:[this.data?.userId._id||'',[Validators.required]],
-  image:[this.data?.image||'',[Validators.required]],
-  description:[this.data?.description||'',[Validators.required]],
-  deadline:[this.data ? new Date (this.data?.deadline.split('-').reverse().join('-')):'',[Validators.required]],
-})
-//compare between old and new value
+
+    this.newTaskForm=this.fb.group({
+      title:[this.data?.title||'',[Validators.required,Validators.minLength(5)]],
+      userId:[this.data?.userId._id||'',[Validators.required]],
+      image:[this.data?.image||''],
+      description:[this.data?.description||'',[Validators.required]],
+      deadline:[this.data ? new Date (this.data?.deadline.split('-').reverse().join('-')):'',[Validators.required]],
+    }
+    )
+    if(!this.data){
+      this.getFileFromUrl('assets/no-photo.jpg', 'no-photo.jpg').then(res=>{
+        // `await` can only be used in an async body, but showing it here for simplicity.
+        this.newTaskForm.get('image')?.patchValue(res)
+      });
+    }
+
+    //compare between old and new value
 this.formValues=this.newTaskForm.value
   }
 

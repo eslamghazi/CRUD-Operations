@@ -11,6 +11,7 @@ export interface changeStatus{
 })
 export class UsersService {
 userData = new BehaviorSubject({})
+
   constructor(private http:HttpClient) { }
 
 getAllUsers(filter:any){
@@ -43,5 +44,7 @@ getUserData(model?:any){
   })
 
 }
+
+
 
 }

@@ -4,6 +4,7 @@
             background-color: #bc1059!important;
             .mat-header-cell {
                 color: #FFF;
+                text-align: center;
             }
         }
     }
@@ -34,3 +35,8 @@
 }
 
 .rtl{direction:rtl!important;}
+
+.mat-cell.No{
+  font-size: 21px;
+  text-align: center;
+}

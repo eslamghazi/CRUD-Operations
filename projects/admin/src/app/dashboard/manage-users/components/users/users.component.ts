@@ -1,11 +1,15 @@
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { TransSenderService } from './../../../../core/trans-sender.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UsersService, changeStatus } from './../../services/users.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationComponent } from '../../../tasks-admin/confirmation/confirmation.component';
 import { ToastrService } from 'ngx-toastr';
+import { MatTableDataSource } from '@angular/material/table';
+
 export interface PeriodicElement {
   name: string;
   email: string;
@@ -22,10 +26,11 @@ export interface PeriodicElement {
 export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'email' ,'tasksAssigned', 'actions'];
   dataSource:any = [];
+  @ViewChild(MatPaginator) paginator!:MatPaginator
+  @ViewChild(MatSort) sort!:MatSort
 page=1
-userFilter:any={username:"",email:""}
 totalItems:any
-langu:any
+searchText:any
   constructor(private usersService:UsersService,
                public dialog: MatDialog,
                 public matDialog:MatDialog,
@@ -33,10 +38,8 @@ langu:any
                 private translate:TranslateService,
                 private transSender:TransSenderService
     ) { this.getDataFromSubject()
-      this.transSender.lang.subscribe((trans)=>{
-        this.langu=trans
+
       }
-      )}
 
   ngOnInit(): void {
     this.getUsers()
@@ -45,7 +48,7 @@ langu:any
 getUsers(){
   const MODEL={
     page:this.page,
-    limit:10,
+    // limit:10,
     name:'',
       }
       this.usersService.getUserData(MODEL)
@@ -53,18 +56,36 @@ getUsers(){
 
 getDataFromSubject(){
   this.usersService.userData.subscribe((res:any)=>{
-this.dataSource=res.data
-this.totalItems=res.total
+    this.dataSource= new MatTableDataSource(res.data)
+    this.dataSource.paginator=this.paginator
+    this.dataSource.sort=this.sort
+    // this.dataSource= res.data
+    // this.dataSource=res.data
+    this.totalItems=res.total
+
+
+
   })
 }
 
-changePage(event:any){
-this.page=event
-this.getUsers()
+applyFilter(event:Event){
+const filterValue =(event.target as HTMLInputElement).value
+this.dataSource.filter=filterValue.trim().toLowerCase()
+
+if(this.dataSource.paginator){
+  // this.dataSource.paginator.firstpage()
+  this.paginator.pageIndex = 0;
+
+}
 }
 
+// changePage(event:any){
+// this.page=event
+// this.getUsers()
+// }
+
 deleteTask(id:any,index:number){
-  if(this.dataSource[index].assignedTasks > 0){
+  if(index > 0){
     this.toastr.error(this.translate.instant("toaster.CantDelete"))
   }else{
   const dialogRef = this.dialog.open(ConfirmationComponent, {
@@ -93,7 +114,7 @@ const MODEL:changeStatus={
   id,
   status,
 }
-if(this.dataSource[index].assignedTasks > 0){
+if(index > 0){
   this.toastr.error(this.translate.instant("toaster.CantDelete"))
 }else{
 const dialogRef = this.dialog.open(ConfirmationComponent, {
