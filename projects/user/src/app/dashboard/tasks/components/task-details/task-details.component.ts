@@ -18,7 +18,7 @@ taskDetails:any
               private router:Router,
               private translate:TranslateService) {
                 this.route.paramMap.subscribe((res:any)=>{
-                  console.log(res);
+
                   this.taskId = res.params['id']
                 })
                }
@@ -28,7 +28,7 @@ taskDetails:any
 
 getTaskDetails(){
 this.taskService.taskDetails(this.taskId).subscribe((res:any)=>{
-  console.log(res);
+
 
   this.taskDetails = res.tasks
 })

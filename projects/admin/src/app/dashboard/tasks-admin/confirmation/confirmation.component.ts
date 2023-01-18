@@ -21,7 +21,6 @@ export class ConfirmationComponent implements OnInit {
   confirm(){
     if(this.data=='insure'){
 
-      console.log(this.data);
 
        this.dialog.close(true)
 

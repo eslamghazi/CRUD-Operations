@@ -69,7 +69,7 @@ langu:any
   getUsersData(){
 let token = JSON.stringify(localStorage.getItem('token'))
 this.userData=JSON.parse(window.atob(token.split('.')[1]))
-console.log(this.userData);
+
 
   }
 
@@ -77,7 +77,7 @@ console.log(this.userData);
 this.tasksService.getAllTasks(this.userData.userId,this.filteration).subscribe((res:any)=>{
   this.dataSource=res.tasks
   this.totalItems=res.totalItems
-console.log(this.dataSource);
+
 
 }
 )

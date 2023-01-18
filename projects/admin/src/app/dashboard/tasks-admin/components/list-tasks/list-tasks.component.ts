@@ -141,7 +141,7 @@ selectDate(event:any,type:any){
       }
 
     })
-    console.log(newTasks);
+
 
     return newTasks
 

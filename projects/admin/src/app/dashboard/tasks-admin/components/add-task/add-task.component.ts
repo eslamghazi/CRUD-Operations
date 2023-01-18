@@ -70,7 +70,6 @@ this.formValues=this.newTaskForm.value
 
   selectImage(event:any){
     this.newTaskForm.get('image')?.setValue(event.target.files[0])
-    console.log(event);
    this.fileName=event.target.files[0].name
   }
 
@@ -115,7 +114,6 @@ if( key == 'deadline'){
 
   formData.append(key,value)
 }
-console.log(key,value);
 
  })
  return formData
