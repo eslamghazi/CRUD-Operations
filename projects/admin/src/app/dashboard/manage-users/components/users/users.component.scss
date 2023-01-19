@@ -1,15 +1,29 @@
 :host ::ng-deep {
     table {
         thead {
+          .align{
+
+            text-align: center;
+          }
             background-color: #bc1059!important;
             .mat-header-cell {
                 color: #FFF;
-                text-align: center;
+
             }
         }
     }
 }
 
+
+
+:host ::ng-deep{
+.mat-cell.cdk-cell.ng-star-inserted
+// mat-cell cdk-cell.ng-star-inserted
+ {
+  padding-right: 15px;
+
+}
+}
 :host ::ng-deep {
   div.d-flex.justify-content-center.mt-3{
     // background: #ca085a;
@@ -29,6 +43,9 @@
   }
   }
 }
+
+
+
 
 .w-20 {
     width: 20%!important;

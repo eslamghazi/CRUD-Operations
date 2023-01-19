@@ -10,7 +10,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 body{
   background-image: url('assets/76.jpg');
   position:relative;
-  min-height:100vh;
+  min-height:119vh;
+ min-width: fit-content;
+
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -20,3 +22,7 @@ footer{
 
 }
 
+.text-center.p-2.ptop{
+  margin-top: 110px;
+
+  }

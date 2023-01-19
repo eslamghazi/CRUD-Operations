@@ -9,6 +9,14 @@ button {
     }
 }
 
+:host ::ng-deep{
+  .mat-cell.cdk-cell.ng-star-inserted
+  // mat-cell cdk-cell.ng-star-inserted
+   {
+    padding-right: 15px;
+
+  }
+  }
 
 
 :host ::ng-deep {
@@ -46,18 +54,23 @@ button {
 :host ::ng-deep {
     table {
         thead {
+          .align{
+
+            text-align: center;
+          }
             background-color: #bc1059!important;
             .mat-header-cell {
                 color: #FFF;
                 // font-size: 150%;
                 // margin-top: 25px;
 
-                  text-align: center;
+                  // text-align: center;
 
             }
         }
     }
 }
+
 
 table{
   img{
